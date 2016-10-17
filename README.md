@@ -38,7 +38,7 @@ If this is your first time running a simulation only:
 
 - Set the style sheet by typing 
 
-:style
+ > :style
 
 (you need the colon) into the command window and hitting enter.
  
@@ -132,7 +132,7 @@ To change the operating specifications of the link canals, modify the numbers in
 
 As an example, we will modify link canal #10. In the default files downloaded from the website, link canal #10 is:
 
-ON;10;Daudhan Dam;Barwa Sagar Reservoir;1074;68;366;49;591;.181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191;;T
+#####ON;10;Daudhan Dam;Barwa Sagar Reservoir;1074;68;366;49;591;.181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191;;T
 
 Explanation of parameters: 
 ON: The link canal is turned on in the simulation
@@ -158,15 +158,15 @@ In the rivers.txt file, each row has two values. The first value of each row is 
 
 To add a new river to the file, simple add a new row to rivers.txt. Fill in the headwater node, confluences, and mouth node accordingly. For example, to add the Netravati to the model, a line would be added to rivers.txt:
 
-Netravati;Netravati headwaters,Netravati mouth
+#####Netravati;Netravati headwaters,Netravati mouth
 
 To add the Gomti River, a tributary of the Ganga that was not included in the model, a line would be added to rivers.txt:
 
-Gomti;Gomti headwaters,Gomti-Ganga
+#####Gomti;Gomti headwaters,Gomti-Ganga
 
 In this case, the Ganga line would also have to be modified to include its new confluence with the Gomti:
 
-Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
+#####Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
 
 The confluence must be added in the correct location relative to the existing confluences in the database (confluences are listed for each river from upstream to downstream). 
 
@@ -174,7 +174,7 @@ The confluence must be added in the correct location relative to the existing co
 
 To modify a dam, open the structures.txt file. Parameters are given in the header rows. As an example, here is the line for the Chisapani Dam: 
 
-Chisapani Dam,Ghaghara,Ghaghara headwaters,Sarda-Ghaghara,12000,Proposed,Dam,
+#####Chisapani Dam,Ghaghara,Ghaghara headwaters,Sarda-Ghaghara,12000,Proposed,Dam,
 
 Explanation of parameters: 
 Chisapani Dam: The structure name
@@ -197,20 +197,20 @@ To put all of these examples together, we will build a new (fake) link canal int
 
 - Open rivers.txt. Add the Gomti to the model by adding the line:
 
-Gomti;Gomti headwaters,Gomti-Ganga
+#####Gomti;Gomti headwaters,Gomti-Ganga
 
 to the bottom of rivers.txt. Next, modify the Ganga line to add the Gomti-Ganga confluence:
 
-Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
+#####Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
 Save rivers.txt and close.
 
 - Open structures.txt. We will add a new dam on the Gomti river, with a dead storage of 3000 MCM. Because this is the only structure on the Gomti river, we know it will fall between the nodes Gomti headwaters and Gomti-Ganga. Add the dam by adding the line to the end of structures.txt:
 
-Gomti High Dam,Gomti,Gomti headwaters,Gomti-Ganga,3000,Proposed,Dam,
+#####Gomti High Dam,Gomti,Gomti headwaters,Gomti-Ganga,3000,Proposed,Dam,
 
 We also need to add an outfall location on the Son river for our new link canal. We will put it far upstream of the Son, between the headwaters and the proposed Kadwan Dam. Dead storage is 0 because it is a simple outfall point. Add a second line to structures.txt:
 
-Gomti-Son Outfall,Son,Son headwaters,Kadwan Dam,0,Proposed,Outfall
+#####Gomti-Son Outfall,Son,Son headwaters,Kadwan Dam,0,Proposed,Outfall
 
 Save structures.txt and close.
 
@@ -218,7 +218,7 @@ Save structures.txt and close.
 
 To represent this link, add a line to links.txt:
 
-ON;30;Gomti High Dam;Gomti-Son Outfall;2000;100;500;30;1370;.125,.125,.125,.125,.125,.125,0,0,0,0,.125,.125;;D 
+#####ON;30;Gomti High Dam;Gomti-Son Outfall;2000;100;500;30;1370;.125,.125,.125,.125,.125,.125,0,0,0,0,.125,.125;;D 
 
 Save links.txt and close
 
