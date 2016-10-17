@@ -219,7 +219,7 @@ Save rivers.txt and close.
 
 #####Gomti High Dam,Gomti,Gomti headwaters,Gomti-Ganga,3000,Proposed,Dam,
 
-We also need to add an outfall location on the Son river for our new link canal. We will put it far upstream of the Son, between the headwaters and the proposed Kadwan Dam. Dead storage is 0 because it is a simple outfall point. Add a second line to structures.txt:
+We also need to add an outfall location on the Son river for our new link canal. We will put it far upstream on the Son, between the headwaters and the proposed Kadwan Dam. Dead storage is 0 because it is a simple outfall point. Add a second line to structures.txt:
 
 #####Gomti-Son Outfall,Son,Son headwaters,Kadwan Dam,0,Proposed,Outfall
 
