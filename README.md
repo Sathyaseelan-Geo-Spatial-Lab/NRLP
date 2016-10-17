@@ -36,8 +36,8 @@ If this is your first time running a simulation only:
  
 - Click “browse to http://localhost:7474”. Your browser should open and Neo4J will request a username and password for the database. Enter the default, neo4j and neo4j. When prompted to change your password, choose “database” (all lowercase, no quotes). If you choose to use a password besides database, you will need to modify the authentication line in the python script – so don’t chose a different password unless you feel comfortable making that modification. This will only be your password for this model run, not for your Neo4J account in general. 
 
-https://github.com/sahiggin/NRLP/blob/master/readmePics/2.png
-https://github.com/sahiggin/NRLP/blob/master/readmePics/3.png
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/2.png)
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/3.png)
 
 - Set the style sheet by typing 
 
@@ -45,17 +45,17 @@ https://github.com/sahiggin/NRLP/blob/master/readmePics/3.png
 
 (you need the colon) into the command window and hitting enter.
 
-https://github.com/sahiggin/NRLP/blob/master/readmePics/4.png
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/4.png)
  
 - A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from your input files folder onto the button “Drop a grass file here to import.” Release your mouse when the file is hovering above the button. This step is not required, but is recommended to improve ease of interpreting the model results once the simulation is run. It will restyle all graphs built in this database to have red link canals and blue rivers, with river mouths larger than other nodes. 
 
-https://github.com/sahiggin/NRLP/blob/master/readmePics/5.png
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/5.png)
  
 #4. Run a basic simulation with all link canals set to “off”
 
 - If Neo4J is not already running, start Neo4J (in Windows, from the start menu) and click “start”:
 
-https://github.com/sahiggin/NRLP/blob/master/readmePics/1.png
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/1.png)
 
 - Open a command line (cmd in Windows, or a terminal in Mac/Unix), and navigate to the input files folder:
 ```
@@ -93,7 +93,7 @@ Click on any of the nodes (light or dark blue circles) to see its monthly change
 
 This is equivalent to asking the database “which nodes are connected to the node called Godavari mouth?” The answer will display on the screen – in this simulation, only the Godavari headwaters node is connected to the river mouth. 
 
-https://github.com/sahiggin/NRLP/blob/master/readmePics/6.png
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/6.png)
  
 - Turn the link canals on and re-build the database. Go back to the command line (cmd in Windows, or terminal in Mac/Unix) and type:
 ```
