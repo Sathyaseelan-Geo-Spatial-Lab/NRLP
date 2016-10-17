@@ -1,0 +1,11 @@
+River mouth or POI, total annual change in 10^6 m^3, monthly changes in m^3/s
+Hooghly mouth: -87386*10^6 m^3/y, Monthly values:-550,-537,-518,-518,-518,-518,-6801,-6794,-7245,-7253,-1002,-1002
+Farakka Barrage: -49471*10^6 m^3/y, Monthly values:1253,1267,1286,1286,1286,1285,-6801,-6794,-7245,-7253,801,801
+Hardinge Bridge: -87386*10^6 m^3/y, Monthly values:-550,-537,-518,-518,-518,-518,-6801,-6794,-7245,-7253,-1002,-1002
+Bahadurabad Station: -43210*10^6 m^3/y, Monthly values:0,0,0,0,0,0,-4111,-4111,-4111,-4111,0,0
+Ganga mouth: -130596*10^6 m^3/y, Monthly values:-550,-537,-518,-518,-518,-518,-10911,-10904,-11356,-11364,-1002,-1002
+Mahanadi mouth: -9182*10^6 m^3/y, Monthly values:-70,-70,-70,-70,-70,-70,-734,-734,-734,-734,-70,-70
+Godavari mouth: -8105*10^6 m^3/y, Monthly values:-257,-257,-257,-257,-257,-257,-257,-257,-257,-257,-257,-257
+Krishna mouth: 28*10^6 m^3/y, Monthly values:137,137,137,137,137,11,11,-318,-318,-208,11,11
+Penna mouth: 2381*10^6 m^3/y, Monthly values:-4,-4,-4,-4,-4,9,9,339,339,229,9,9
+Kaveri mouth: 1603*10^6 m^3/y, Monthly values:51,51,51,51,51,51,51,51,51,51,51,51

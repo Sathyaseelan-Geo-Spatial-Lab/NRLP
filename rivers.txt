@@ -1,0 +1,34 @@
+Brahmaputra;Brahmaputra headwaters,Manas-Brahmaputra,Sankosh-Brahmaputra,Raidak-Brahmaputra,Torsa-Brahmaputra,Jaldhak-Brahmaputra,Bahadurabad Station,Brahmaputra-Ganga
+Manas;Manas headwaters,Manas-Brahmaputra
+Sankosh;Sankosh headwaters,Sankosh-Brahmaputra
+Raidak;Raidak headwaters,Raidak-Brahmaputra
+Torsa;Torsa headwaters,Torsa-Brahmaputra
+Jaldhak;Jaldhak headwaters,Jaldhak-Brahmaputra
+Meghna;Meghna headwaters,Meghna-Ganga
+Ganga;Ganga headwaters,Yamuna-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
+Kosi;Kosi headwaters,Kosi-Ganga
+Mechi;Mechi headwaters,Mechi-Mahananda
+Mahananda;Mahananda headwaters,Mechi-Mahananda,Mahananda-Ganga
+Gandak;Gandak headwaters,Gandak-Ganga
+Ghaghara;Ghaghara headwaters,Sarda-Ghaghara,Rapti-Ghaghara,Ghaghara-Ganga
+Sarda;Sarda headwaters,Sarda-Ghaghara
+Yamuna;Yamuna headwaters,Chambal-Yamuna,Betwa-Yamuna,Ken-Yamuna,Yamuna-Ganga
+Parbati;Parbati headwaters,Parbati-Chambal
+Newaj;Newaj headwaters,Newaj-Kalisindh
+Kalisindh;Kalisindh headwaters,Newaj-Kalisindh,Kalisindh-Chambal
+Chambal;Chambal headwaters,Kalisindh-Chambal,Parbati-Chambal,Chambal-Yamuna
+Betwa;Betwa headwaters,Betwa-Yamuna
+Ken;Ken headwaters,Ken-Yamuna
+Son;Son headwaters,Son-Ganga
+STG;STG headwaters,STG-Ganga
+Hooghly;Farakka Barrage,Hooghly mouth
+Subarnarekha;Subarnarekha headwaters,Subarnarekha mouth
+Mahanadi;Mahanadi headwaters,Mahanadi mouth
+Godavari;Godavari headwaters,Godavari mouth
+Krishna;Krishna headwaters,Krishna mouth
+Penna;Penna headwaters,Chitravati-Penna,Penna mouth
+Chitravati;Chitravati headwaters,Chitravati-Penna
+Kaveri;Kaveri headwaters,Kaveri mouth
+Gundar;Gundar headwaters,Gundar mouth
+Sabarmati;Sabarmati headwaters,Sabarmati mouth
+Rapti;Rapti headwaters,Rapti-Ghaghara
