@@ -111,10 +111,10 @@ You should now see the astounding number of nodes that will contribute a portion
  
 #6. Advanced usage: changing model simulation parameters 
 
-In this section, you will learn to:
-(a)	Build a user-defined subset of link canals,
-(b)	Print different nodes to the output files,
-(c)	Change the operating specifications of the dams and link canals, and create new dams and/or link canals, including linking new rivers together. 
+This section covers:
+* Building a user-defined subset of link canals,
+* Printing different nodes to the output files,
+* Changing the operating specifications of the dams and link canals, and create new dams and/or link canals, including linking new rivers together. 
 
 ##Building a user-defined subset of link canals
 
