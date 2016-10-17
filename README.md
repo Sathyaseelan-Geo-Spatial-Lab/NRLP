@@ -1,6 +1,6 @@
-Getting started with the NRLP tool: instructions for installing software, setting up Neo4J, running a basic simulation, exploring the database, and making advanced changes to the parameters
+#Getting started with the NRLP tool: instructions for installing software, setting up Neo4J, running a basic simulation, exploring the database, and making advanced changes to the parameters
 
-#Install required software
+#1. Install required software
 
 ##Install Neo4J’s free community version for individuals: https://neo4j.com/download/
 
@@ -20,9 +20,10 @@ With pip:
 
 > pip install py2neo==2.0.8
 
-#Download all the files in this repository and save them to a folder of your choice. 
+#2. Download files 
+Download or clone all of the files in this repository and save them to a folder of your choice. 
 
-#Set up Neo4J
+#3. Set up Neo4J
 
 If this is your first time running a simulation only:
 
@@ -36,7 +37,7 @@ If this is your first time running a simulation only:
  
 A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from your input files folder onto the button “Drop a grass file here to import.” Release your mouse when the file is hovering above the button. This step is not required, but is recommended to improve ease of interpreting the model results once the simulation is run. It will restyle all graphs built in this database to have red link canals and blue rivers, with river mouths larger than other nodes. 
  
-#Run a basic simulation with all link canals set to “off”
+#4. Run a basic simulation with all link canals set to “off”
 
 ##If Neo4J is not already running, start Neo4J (in Windows, from the start menu) and click “start”:
 
@@ -56,7 +57,7 @@ A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from y
 
 This runs the simulation with all link canals set to “off,” and the software will calculate water discharge changes for 10 points (Hooghly mouth, Farakka Barrage on the Ganga, Hardinge Bridge on the Ganga, Bahadurabad gauging station on the Brahmaputra, the Ganga/Brahmaputra/Meghna mouth at the Bay of Bengal, the Mahanadi mouth, the Godavari mouth, the Krishna mouth, the Penna mouth, and the Kaveri mouth). If everything is set up correctly, you should see a list of rivers printing to the console. When the simulation is done, a new file should appear in the folder: “results.txt.” This file should give expected annual and monthly changes in water discharge for the points specified. All of these values should be “0” on your initial run, because all link canals are set to “off.” 
  
-#Explore the results in the database
+#5. Explore the results in the database
 
 Neo4J is a graph database program with its own query language, Cypher. The Cypher commands in this document are only meant get you started exploring the connected graph database of India’s rivers and the NRLP link canals. For a complete tutorial of Cypher, see Neo4J’s materials on their website.
 
@@ -92,7 +93,7 @@ $ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
 
 You should now see the astounding number of nodes that will contribute a portion of their flow to the Godavari river mouth given full implementation of the NRLP. These nodes represent points along rivers, (all from new watersheds), from which at least some quantum of water could be expected to travel to the Godavari river mouth if all link canals are constructed. 
  
-#Advanced usage: changing model simulation parameters 
+#6. Advanced usage: changing model simulation parameters 
 
 In this section, you will learn to:
 (a)	Build a user-defined subset of link canals,
@@ -183,7 +184,7 @@ To modify a dam’s dead storage, for example, simply change that value in struc
 
 Examine the database in Neo4J to find the two nodes between which you wish to put your new structure. 
 
-#Advanced usage (b): Putting it all together to add a new (fake) link canal
+#7. Advanced usage (b): Putting it all together to add a new (fake) link canal
 
 To put all of these examples together, we will build a new (fake) link canal into the model to transport water from the Gomti to the Son. The Gomti is a tributary of the Ganga that was not originally included in the model. 
 
