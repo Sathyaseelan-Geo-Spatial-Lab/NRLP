@@ -200,7 +200,7 @@ To modify a dam’s dead storage, for example, simply change that value in struc
 ```
 Examine the database in Neo4J to find the two nodes between which you wish to put your new structure. 
 
-#7. Advanced usage b: Putting it all together to add a new (fake) link canal
+#7. Advanced usage part II: putting it all together to add a new (fake) link canal
 
 To put all of these examples together, we will build a new (fake) link canal into the model to transport water from the Gomti to the Son. The Gomti is a tributary of the Ganga that was not originally included in the model. 
 
