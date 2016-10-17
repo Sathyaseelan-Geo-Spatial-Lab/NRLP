@@ -2,9 +2,9 @@
 
 #1. Install required software
 
--Install Neo4J’s free community version for individuals: https://neo4j.com/download/
+- Install Neo4J’s free community version for individuals: https://neo4j.com/download/
 
--Install Python 2.7, including numpy. Anaconda is a good Python platform that comes with numpy: https://www.continuum.io/downloads
+- Install Python 2.7, including numpy. Anaconda is a good Python platform that comes with numpy: https://www.continuum.io/downloads
 
 If you already have a basic Python installation, install numpy with pip from the command line:
 
@@ -12,7 +12,7 @@ If you already have a basic Python installation, install numpy with pip from the
 > pip install numpy
 ```
 
--Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
+- Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
 
 With Anaconda: 
 ```
@@ -23,27 +23,32 @@ With pip:
 > pip install py2neo==2.0.8
 ```
 #2. Download files 
-Download or clone all of the files in this repository and save them to a folder of your choice. 
+
+- Download or clone all of the files in this repository and save them to a folder of your choice. 
 
 #3. Set up Neo4J
 
 If this is your first time running a simulation only:
 
-##Start Neo4J (on Windows, from the Windows Start Menu.) Use the default database location and click “start”: 
+- Start Neo4J (on Windows, from the Windows Start Menu.) Use the default database location and click “start”: 
  
-##Click “browse to http://localhost:7474”. Your browser should open and Neo4J will request a username and password for the database. Enter the default, neo4j and neo4j. 
+- Click “browse to http://localhost:7474”. Your browser should open and Neo4J will request a username and password for the database. Enter the default, neo4j and neo4j. 
  
-##Change your password to “database” (all lowercase, no quotes). If you choose to use a password besides database, you will need to modify the authentication line in the python script – so don’t chose a different password unless you feel comfortable making that modification. This will only be your password for this model run, not for your Neo4J account in general. 
+- Change your password to “database” (all lowercase, no quotes). If you choose to use a password besides database, you will need to modify the authentication line in the python script – so don’t chose a different password unless you feel comfortable making that modification. This will only be your password for this model run, not for your Neo4J account in general. 
+
+- Set the style sheet by typing 
+
+:style
+
+(you need the colon) into the command window and hitting enter.
  
-##Set the style sheet by typing “:style” (you need the colon) into the command window and hitting enter.
- 
-A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from your input files folder onto the button “Drop a grass file here to import.” Release your mouse when the file is hovering above the button. This step is not required, but is recommended to improve ease of interpreting the model results once the simulation is run. It will restyle all graphs built in this database to have red link canals and blue rivers, with river mouths larger than other nodes. 
+- A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from your input files folder onto the button “Drop a grass file here to import.” Release your mouse when the file is hovering above the button. This step is not required, but is recommended to improve ease of interpreting the model results once the simulation is run. It will restyle all graphs built in this database to have red link canals and blue rivers, with river mouths larger than other nodes. 
  
 #4. Run a basic simulation with all link canals set to “off”
 
-##If Neo4J is not already running, start Neo4J (in Windows, from the start menu) and click “start”:
+- If Neo4J is not already running, start Neo4J (in Windows, from the start menu) and click “start”:
 
-##Open a command line (cmd in Windows, or a terminal in Mac/Unix), and navigate to the input files folder:
+- Open a command line (cmd in Windows, or a terminal in Mac/Unix), and navigate to the input files folder:
 ```
 > chdir Desktop\Neo4JInputs
 ```
@@ -53,7 +58,7 @@ A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from y
 ```
 (on Mac/UNIX).
 
-##Run the script. We are going to run it with an optional argument that sets all link canals to “off” for this initial test. 
+- Run the script. We are going to run it with an optional argument that sets all link canals to “off” for this initial test. 
 ```
 > python NRLP.py --canals OFF
 ```
@@ -63,35 +68,35 @@ This runs the simulation with all link canals set to “off,” and the software
 
 Neo4J is a graph database program with its own query language, Cypher. The Cypher commands in this document are only meant get you started exploring the connected graph database of India’s rivers and the NRLP link canals. For a complete tutorial of Cypher, see Neo4J’s materials on their website.
 
-##If you haven’t already, open your browser and navigate to http://localhost:7474/browser/ . Note that if Neo4J is running, this tab should have opened when you clicked “start.”
+- If you haven’t already, open your browser and navigate to http://localhost:7474/browser/ . Note that if Neo4J is running, this tab should have opened when you clicked “start.”
 
-##In the command window, type the following:
+- In the command window, type the following:
 
-$ MATCH (n) RETURN (n)
+> $ MATCH (n) RETURN (n)
 
 and hit enter. This will display everything in the database - the full river and link canal system built by the last simulation. 
 Because the simulation had all link canals set to “off,” you should only see rivers. The rivers flow to their mouths; arrows indicate direction of flow. There is no spatial information in this database, so the locations of the rivers on the screen does not correspond to their locations in real life. This is just a backend representing connectivity and flow. Flow directions have been hard-coded into the database. If you’d like, you can click on nodes and drag them around to reposition them on the screen. Note that you can blow up the database window by clicking the small arrow in the top right corner. You will need to shrink it again before entering any new commands. 
 Click on any of the nodes (light or dark blue circles) to see its monthly change in water discharge. All values should be zero, since all link canals were set to “OFF.” Many rivers consist of just two nodes – a headwaters and a mouth – and the rivers are not connected together because there are no link canals in the simulation. 
 
-##Let’s explore connectivity by querying the database. We are going to ask which nodes contribute to a certain node of interest – in this case, the Godavari mouth. Do this by typing:
+- Let’s explore connectivity by querying the database. We are going to ask which nodes contribute to a certain node of interest – in this case, the Godavari mouth. Do this by typing:
 
-$ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
+> $ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
 
 This is equivalent to asking the database “which nodes are connected to the node called Godavari mouth?” The answer will display on the screen – in this simulation, only the Godavari headwaters node is connected to the river mouth. 
  
-##Turn the link canals on and re-build the database. Go back to the command line (cmd in Windows, or terminal in Mac/Unix) and type:
+- Turn the link canals on and re-build the database. Go back to the command line (cmd in Windows, or terminal in Mac/Unix) and type:
 ```
 > python NRLP.py --canals ON
 ```
 This will build every link canal in the NRLP plan. It may take up to a minute to run the simulation. Changes in water discharge for the ten points of interest will print to the console and to the results.txt file again, but this time there should be values representing the monthly and annual water discharge changes given full implementation of the NRLP. We can query the database now to see what the river system of India looks like with the NRLP in place:
 
-$ MATCH (n) RETURN (n) 
+> $ MATCH (n) RETURN (n) 
 
 It is highly recommended to expand the result window using the arrow in the top right corner to view the entire system (you will have to shrink the window again to enter new commands). Rivers are still blue, but now link canals have been constructed and appear red in the results window. New dams and barrages appear pink. You can click on any link canal to see its operating specifications. For any node – not just the nodes printed to the results file – you can click to see the monthly and annual changes in water discharge for that point. 
 
-##Now let’s return to the question of connectivity for the Godavari River. Repeat the query from above, asking which nodes contribute to the Godavari river mouth in the all-link-canals scenario:
+- Now let’s return to the question of connectivity for the Godavari River. Repeat the query from above, asking which nodes contribute to the Godavari river mouth in the all-link-canals scenario:
 
-$ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
+> $ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
 
 You should now see the astounding number of nodes that will contribute a portion of their flow to the Godavari river mouth given full implementation of the NRLP. These nodes represent points along rivers, (all from new watersheds), from which at least some quantum of water could be expected to travel to the Godavari river mouth if all link canals are constructed. 
  
@@ -190,7 +195,7 @@ Examine the database in Neo4J to find the two nodes between which you wish to pu
 
 To put all of these examples together, we will build a new (fake) link canal into the model to transport water from the Gomti to the Son. The Gomti is a tributary of the Ganga that was not originally included in the model. 
 
-##Open rivers.txt. Add the Gomti to the model by adding the line:
+- Open rivers.txt. Add the Gomti to the model by adding the line:
 
 Gomti;Gomti headwaters,Gomti-Ganga
 
@@ -199,7 +204,7 @@ to the bottom of rivers.txt. Next, modify the Ganga line to add the Gomti-Ganga 
 Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
 Save rivers.txt and close.
 
-##Open structures.txt. We will add a new dam on the Gomti river, with a dead storage of 3000 MCM. Because this is the only structure on the Gomti river, we know it will fall between the nodes Gomti headwaters and Gomti-Ganga. Add the dam by adding the line to the end of structures.txt:
+- Open structures.txt. We will add a new dam on the Gomti river, with a dead storage of 3000 MCM. Because this is the only structure on the Gomti river, we know it will fall between the nodes Gomti headwaters and Gomti-Ganga. Add the dam by adding the line to the end of structures.txt:
 
 Gomti High Dam,Gomti,Gomti headwaters,Gomti-Ganga,3000,Proposed,Dam,
 
@@ -209,7 +214,7 @@ Gomti-Son Outfall,Son,Son headwaters,Kadwan Dam,0,Proposed,Outfall
 
 Save structures.txt and close.
 
-##Open links.txt. We will add our link canal and specify that it operates as a “Dam,” so that water is stored from July-October and delivered to the Son evenly during the rest of the months. 2000 MCM will be transferred per year, with 100 transmission (evaporation) loss, 500 enroute irrigation use, and 30 enroute domestic and industrial use. 13700 will therefore be delivered to the Son per year. 
+- Open links.txt. We will add our link canal and specify that it operates as a “Dam,” so that water is stored from July-October and delivered to the Son evenly during the rest of the months. 2000 MCM will be transferred per year, with 100 transmission (evaporation) loss, 500 enroute irrigation use, and 30 enroute domestic and industrial use. 13700 will therefore be delivered to the Son per year. 
 
 To represent this link, add a line to links.txt:
 
@@ -217,14 +222,14 @@ ON;30;Gomti High Dam;Gomti-Son Outfall;2000;100;500;30;1370;.125,.125,.125,.125,
 
 Save links.txt and close
 
-##Run the model to rebuild the database
+- Run the model to rebuild the database
 ```
 > python NRLP.py 
 ```
-##Navigate to http://localhost:7474 in your browser to view the Neo4J database. 
+- Navigate to http://localhost:7474 in your browser to view the Neo4J database. 
 
-##Enter the following command to view the Ganga basin with the new canal:
+- Enter the following command to view the Ganga basin with the new canal:
 
-$ MATCH ()-[r*]->(n {name:'Farakka Barrage'}) RETURN *
+> $ MATCH ()-[r*]->(n {name:'Farakka Barrage'}) RETURN *
 
 Your new link canal should be visible with ID # 30 in the database. The results.txt file should also show that Ganges river discharge is reduced by 630 MCM per year, as we specified (2000 is removed from the Gomti, but 1370 is returned to the Son and transported to the Ganga before it reaches Farakka Barrage). Monthly discharge values in cubic meters per second are also slightly altered. 
