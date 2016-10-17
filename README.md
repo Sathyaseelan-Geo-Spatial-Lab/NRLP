@@ -57,11 +57,11 @@ With pip:
 
 - Open a command line (cmd in Windows, or a terminal in Mac/Unix), and navigate to the input files folder:
 ```
-> chdir Desktop\Neo4JInputs
+> chdir Desktop\NRLP-master
 ```
 (on Windows), or 
 ```
-> cd Desktop/Neo4JInputs 
+> cd Desktop/NRLP-master
 ```
 (on Mac/UNIX).
 
