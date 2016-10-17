@@ -14,7 +14,6 @@ With Anaconda:
 With pip:
 > pip install py2neo==2.0.8
 
-
 II. Download model files
 1. Download the tool NRLP.py from this website and save it to a folder of your choice
 2. Download the three input files rivers.txt, structures.txt and links.txt and save them to the same folder as this script. The model files must be in the same file as this script to run the program.
@@ -24,26 +23,17 @@ III. Set up Neo4J
 If this is your first time running a simulation only:
 1. Start Neo4J (on Windows, from the Windows Start Menu.) Use the default database location and click “start”: 
  
-
 2. Click “browse to http://localhost:7474”. Your browser should open and Neo4J will request a username and password for the database. Enter the default, neo4j and neo4j. 
  
-
-
-
-
-
-
-
 3. Change your password to “database” (all lowercase, no quotes). If you choose to use a password besides database, you will need to modify the authentication line in the python script – so don’t chose a different password unless you feel comfortable making that modification. This will only be your password for this model run, not for your Neo4J account in general. 
  
-
 4. Set the style sheet by typing “:style” (you need the colon) into the command window and hitting enter.
  
 A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from your input files folder onto the button “Drop a grass file here to import.” Release your mouse when the file is hovering above the button. This step is not required, but is recommended to improve ease of interpreting the model results once the simulation is run. It will restyle all graphs built in this database to have red link canals and blue rivers, with river mouths larger than other nodes. 
  
 IV. Run a basic simulation with all link canals set to “off”
 1.  If Neo4J is not already running, start Neo4J (in Windows, from the start menu) and click “start”:
- 
+
 2. Open a command line (cmd in Windows, or a terminal in Mac/Unix), and navigate to the input files folder:
 > chdir Desktop\Neo4JInputs
 (on Windows), or 
@@ -66,7 +56,6 @@ $ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
 
 This is equivalent to asking the database “which nodes are connected to the node called Godavari mouth?” The answer will display on the screen – in this simulation, only the Godavari headwaters node is connected to the river mouth. 
  
-
 4. Turn the link canals on and re-build the database. Go back to the command line (cmd in Windows, or terminal in Mac/Unix) and type:
 > python NRLP.py --canals ON
 This will build every link canal in the NRLP plan. It may take up to a minute to run the simulation. Changes in water discharge for the ten points of interest will print to the console and to the results.txt file again, but this time there should be values representing the monthly and annual water discharge changes given full implementation of the NRLP. We can query the database now to see what the river system of India looks like with the NRLP in place:
@@ -140,12 +129,6 @@ To modify a dam’s dead storage, for example, simply change that value in struc
 
 Examine the database in Neo4J to find the two nodes between which you wish to put your new structure. 
 
-
-
-
-
-
-
 VII. Advanced usage (b): Putting it all together to add a new (fake) link canal
 
 To put all of these examples together, we will build a new (fake) link canal into the model to transport water from the Gomti to the Son. The Gomti is a tributary of the Ganga that was not originally included in the model. 
@@ -183,6 +166,7 @@ Save links.txt and close
 5. Navigate to http://localhost:7474 in your browser to view the Neo4J database. 
 
 6. Enter the following command to view the Ganga basin with the new canal:
+
 $ MATCH ()-[r*]->(n {name:'Farakka Barrage'}) RETURN *
 
 Your new link canal should be visible with ID # 30 in the database. The results.txt file should also show that Ganges river discharge is reduced by 630 MCM per year, as we specified (2000 is removed from the Gomti, but 1370 is returned to the Son and transported to the Ganga before it reaches Farakka Barrage). Monthly discharge values in cubic meters per second are also slightly altered. 
