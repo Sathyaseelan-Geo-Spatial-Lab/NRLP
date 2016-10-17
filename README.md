@@ -2,9 +2,9 @@
 
 #1. Install required software
 
-##Install Neo4J’s free community version for individuals: https://neo4j.com/download/
+-Install Neo4J’s free community version for individuals: https://neo4j.com/download/
 
-##Install Python 2.7, including numpy. Anaconda is a good Python platform that comes with numpy: https://www.continuum.io/downloads
+-Install Python 2.7, including numpy. Anaconda is a good Python platform that comes with numpy: https://www.continuum.io/downloads
 
 If you already have a basic Python installation, install numpy with pip from the command line:
 
@@ -12,7 +12,7 @@ If you already have a basic Python installation, install numpy with pip from the
 > pip install numpy
 ```
 
-##Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
+-Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
 
 With Anaconda: 
 ```
