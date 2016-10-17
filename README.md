@@ -24,14 +24,8 @@ With pip:
 
 > pip install py2neo==2.0.8
 
-#Download model files
+#Download all the files in this repository and save them to a folder of your choice. 
 
-##Download the tool NRLP.py from this website and save it to a folder of your choice
-
-##Download the three input files rivers.txt, structures.txt and links.txt and save them to the same folder as this script. The model files must be in the same file as this script to run the program.
-
-##Download the style sheet “belmontstyle.grass” and save it somewhere accessible (the same folder is recommended, but not required).  
- 
 #Set up Neo4J
 
 If this is your first time running a simulation only:
