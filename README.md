@@ -1,4 +1,4 @@
-#Getting started with the NRLP tool: instructions for installing software, setting up Neo4J, running a basic simulation, exploring the database, and making advanced changes to the parameters
+#Getting started with the National River Linking Project tool
 
 #1. Install required software
 
