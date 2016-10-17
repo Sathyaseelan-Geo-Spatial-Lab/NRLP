@@ -135,30 +135,18 @@ As an example, we will modify link canal #10. In the default files downloaded fr
 #####ON;10;Daudhan Dam;Barwa Sagar Reservoir;1074;68;366;49;591;.181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191;;T
 
 Explanation of parameters: 
-
-1.ON: The link canal is turned on in the simulation
-
-2.10: The link canal’s ID number from Higgins et al. (2017)
-
-3.Daudhan Dam: The link canal will offtake water from the Daudhan Dam on the Ken River. Operating specifications for the ‘Daudhan Dam’ structure can be found in “structures.txt’
-
-4.Barwa Sagar Reservoir: the link canal will outfall into Barwa Sagar Reservoir on the Betwa River.
-
-5.1074: The canal is set to remove 1074 MCM (106 cubic meters of water) from the Ken River per year
-
-6.68: 68 MCM per year will be lost to evaporation
-
-7.366: 366 MCM per year will be lost to enroute irrigation
-
-8.49: 49 MCM per year will be lost to enroute domestic and industrial usage
-
-9.591: 591 MCM per year will outfall into the Barwa Sagar Reservoir. Outfall should equal offtake minus losses, however, note that there is currently no fail-safe to ensure that the user has set the parameters this way. Therefore, it is theoretically possible to direct the model to outfall more water than is taken from the offtake river.
-
-10..181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191: These 12 numbers denote assumed monthly operating specifications. The values must total to 1, however, note that there is currently no fail-safe to check and make sure that values equal to 1. The values together reflect the proportion of the 1074 MCM that will be transferred in each month Jan-Dec. 
-
-11.None: The second to last value, “additional required structures,” is empty in this scenario. In other link canals, it lists additional structures such as re-regulating dams that the database should build in conjunction with the main offtake and outfall structures or points. 
-
-12.T: “T” means that this canal operates as a direct transfer – that is, water is directly transferred according to the specified proportions each month. Most link canals are set to operate this way. The other option for the parameter, “D,” indicates a “dam” scenario, in which water is stored during the monsoon season and released during the dry season. In that scenario, the model handles the transfer as follows: the offtake (dammed) river sees a reduction of water according to the inverse of the specified proportions. In other words, water is reduced in the offtake river when the proportion is “0” for the month. This represents the water being stored in the dam, but not delivered to the outfall river. The outfall river sees the outfall as specified by the proportions.
+*ON: The link canal is turned on in the simulation
+*10: The link canal’s ID number from Higgins et al. (2017)
+*Daudhan Dam: The link canal will offtake water from the Daudhan Dam on the Ken River. Operating specifications for the Daudhan Dam structure can be found in “structures.txt"
+*Barwa Sagar Reservoir: the link canal will outfall into Barwa Sagar Reservoir on the Betwa River.
+*1074: The canal is set to remove 1074 MCM (106 cubic meters of water) from the Ken River per year
+*68: 68 MCM per year will be lost to evaporation
+*366: 366 MCM per year will be lost to enroute irrigation
+*49: 49 MCM per year will be lost to enroute domestic and industrial usage
+*591: 591 MCM per year will outfall into the Barwa Sagar Reservoir. Outfall should equal offtake minus losses, however, note that there is currently no fail-safe to ensure that the user has set the parameters this way. Therefore, it is theoretically possible to direct the model to outfall more water than is taken from the offtake river.
+*.181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191: These 12 numbers denote assumed monthly operating specifications. The values must total to 1, however, note that there is currently no fail-safe to check and make sure that values equal to 1. The values together reflect the proportion of the 1074 MCM that will be transferred in each month Jan-Dec. 
+*None: The second to last value, “additional required structures,” is empty in this scenario. In other link canals, it lists additional structures such as re-regulating dams that the database should build in conjunction with the main offtake and outfall structures or points. 
+*T: “T” means that this canal operates as a direct transfer – that is, water is directly transferred according to the specified proportions each month. Most link canals are set to operate this way. The other option for the parameter, “D,” indicates a “dam” scenario, in which water is stored during the monsoon season and released during the dry season. In that scenario, the model handles the transfer as follows: the offtake (dammed) river sees a reduction of water according to the inverse of the specified proportions. In other words, water is reduced in the offtake river when the proportion is “0” for the month. This represents the water being stored in the dam, but not delivered to the outfall river. The outfall river sees the outfall as specified by the proportions.
 
 To change the operating specifications for link canal #10, simply change any of its parameters or values. For example, to connect the link canal to Farakka Barrage instead of Barwa Sagar Reservoir, change “Barwa Sagar Reservoir” to “Farakka Barrage.” To double the annual offtake of water, change “1074” to “2148.” To simulate a hotter climate by increasing evaporation loss, change “366” to a higher number. Change the 12 proportion values to change how the water is moved throughout the year. 
 
@@ -189,20 +177,13 @@ To modify a dam, open the structures.txt file. Parameters are given in the heade
 #####Chisapani Dam,Ghaghara,Ghaghara headwaters,Sarda-Ghaghara,12000,Proposed,Dam,
 
 Explanation of parameters: 
-
-1.Chisapani Dam: The structure name
-
-2.Ghaghara: The river on which the structure will be built
-
-3.Ghaghara headwaters: The node upstream of the structure
-
-4.Sarda-Ghaghara: The node downstream of the structure
-
-5.12000: The dead storage of the structure, if it is a dam (this water will be permanently removed from the river in the simulation)
-
-6.Proposed: The structure is proposed as part of the NRLP. The other option, “exists,” is for existing structures that are proposed to be utilized as part of the NRLP (for example, Farakka Barrage).
-
-7.Dam: The structure type. Options are Dam, Barrage, Offtake, or Outfall. Offtake is for an offtake location without a specified new dam or barrage, and Outfall is for an outfall location directly into a river. 
+*Chisapani Dam: The structure name
+*Ghaghara: The river on which the structure will be built
+*Ghaghara headwaters: The node upstream of the structure
+*Sarda-Ghaghara: The node downstream of the structure
+*12000: The dead storage of the structure, if it is a dam (this water will be permanently removed from the river in the simulation)
+*Proposed: The structure is proposed as part of the NRLP. The other option, “exists,” is for existing structures that are proposed to be utilized as part of the NRLP (for example, Farakka Barrage).
+*Dam: The structure type. Options are Dam, Barrage, Offtake, or Outfall. Offtake is for an offtake location without a specified new dam or barrage, and Outfall is for an outfall location directly into a river. 
 
 To modify a dam’s dead storage, for example, simply change that value in structures.txt. To build a new structure, add a row to the structures.txt file. To find the closest upstream node, build the model with all canals on:
 ```
