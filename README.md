@@ -31,6 +31,8 @@ With pip:
 If this is your first time running a simulation only:
 
 - Start Neo4J (on Windows, from the Windows Start Menu.) Use the default database location and click “start”: 
+
+![alt tag](https://github.com/sahiggin/NRLP/blob/master/readmePics/1.png)
  
 - Click “browse to http://localhost:7474”. Your browser should open and Neo4J will request a username and password for the database. Enter the default, neo4j and neo4j. 
  
