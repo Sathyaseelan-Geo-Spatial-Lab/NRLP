@@ -26,9 +26,7 @@ With pip:
 
 - Download or clone all of the files in this repository and save them to a folder of your choice. 
 
-#3. Set up Neo4J
-
-If this is your first time running a simulation only:
+#3. Set up Neo4J (for the first time running a simulation only)
 
 - Start Neo4J (on Windows, from the Windows Start Menu.) Use the default database location and click “start”: 
 
