@@ -114,11 +114,12 @@ You should now see the astounding number of nodes that will contribute a portion
 This section covers:
 * Building a user-defined subset of link canals,
 * Printing different nodes to the output files,
-* Changing the operating specifications of the dams and link canals, and create new dams and/or link canals, including linking new rivers together. 
+* Changing the operating specifications of the dams and link canals, and 
+* Creating new dams and/or link canals, including linking new rivers together. 
 
 ##Building a user-defined subset of link canals
 
-To build a user-defined subset of link canals, open the “links.txt” input file. Here are listed all of the link canals in the links database of Higgins et al. (2017).  Note that while all link canals are listed, #s 27-29 are not currently implemented in the Neo4J tool because they do not related to the deltas studied in Higgins et al. (2017). Adding functionality for these West Indian links is a topic of future work.
+To build a user-defined subset of link canals, open the “links.txt” input file. Here are listed all of the link canals in the links database of Higgins et al. (2017).  Note that while all link canals are listed, #s 27-29 are not currently implemented in the Neo4J tool because they do not relate to the deltas studied in Higgins et al. (2017). Adding functionality for these West Indian links is a topic of future work.
 
 To turn a subset of link canals on, simply set the keywords “ON” and “OFF” in front of each link accordingly. It is not recommended to use find-and-replace to globally change these keywords, as this can change the names of structures (e.g., “Sone Barrage” changes to “SOFFe Barrage” and breaks the link canal in the simulation.  
 
@@ -127,7 +128,8 @@ Then, rebuild the database from the command line, with no canals argument this t
 > python NRLP.py
 ```
 New results will print to the file, and the Neo4J database at http://localhost:7474/browser/ can be inspected and queried as before. 
-Caution: while changing the model keywords is simple in practice, it is listed under “advanced usage” because there are currently no fail-safes built in to prevent unrealistic link canal subsets from being built. For example, it is possible to build link canal 1.3 in the model without building sections 1.1, 1.2, 1.4 or 1.5. In reality, this would never occur. Similarly, it is possible to build the Subarnarekha-Mahanadi link canal (#15) without building the compensating link canal from Farakka Barrage to the Subarnarekha (#14). This scenario would result in more water being pulled from the Subarnarekha than exists in the river. Users should therefore take care to build only realistic groups of link canals if the data are to be used for scientific purposes. 
+
+*Caution: while changing the model keywords is simple in practice, it is listed under “advanced usage” because there are currently no fail-safes built in to prevent unrealistic link canal subsets from being built. For example, it is possible to build link canal 1.3 in the model without building sections 1.1, 1.2, 1.4 or 1.5. In reality, this would never occur. Similarly, it is possible to build the Subarnarekha-Mahanadi link canal (#15) without building the compensating link canal from Farakka Barrage to the Subarnarekha (#14). This scenario would result in more water being pulled from the Subarnarekha than exists in the river. Users should therefore take care to build only realistic groups of link canals for simulations.* 
 
 ##Printing different nodes to the output file
 
@@ -148,34 +150,34 @@ Explanation of parameters:
 * 10: The link canal’s ID number from Higgins et al. (2017)
 * Daudhan Dam: The link canal will offtake water from the Daudhan Dam on the Ken River. Operating specifications for the Daudhan Dam structure can be found in “structures.txt"
 * Barwa Sagar Reservoir: the link canal will outfall into Barwa Sagar Reservoir on the Betwa River.
-* 1074: The canal is set to remove 1074 MCM (106 cubic meters of water) from the Ken River per year
+* 1074: The canal is set to remove 1074 MCM (1 MCM is 10<sup>6<\sup> cubic meters of water) from the Ken River per year
 * 68: 68 MCM per year will be lost to evaporation
 * 366: 366 MCM per year will be lost to enroute irrigation
 * 49: 49 MCM per year will be lost to enroute domestic and industrial usage
 * 591: 591 MCM per year will outfall into the Barwa Sagar Reservoir. Outfall should equal offtake minus losses, however, note that there is currently no fail-safe to ensure that the user has set the parameters this way. Therefore, it is theoretically possible to direct the model to outfall more water than is taken from the offtake river.
-* .181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191: These 12 numbers denote assumed monthly operating specifications. The values must total to 1, however, note that there is currently no fail-safe to check and make sure that values equal to 1. The values together reflect the proportion of the 1074 MCM that will be transferred in each month Jan-Dec. 
+* .181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191: These 12 numbers denote assumed monthly operating specifications. For example, in this scenario, 18.1 % of 1074 MCM will be removed in January, 10.7% in February, etc. All losses and outfalls will also scale according to these proportions. The values must total to 1, however, note that there is currently no fail-safe to check and make sure that values equal to 1. Care should be taken to double-check that proportions total to 1. 
 * None: The second to last value, “additional required structures,” is empty in this scenario. In other link canals, it lists additional structures such as re-regulating dams that the database should build in conjunction with the main offtake and outfall structures or points. 
-* T: “T” means that this canal operates as a direct transfer – that is, water is directly transferred according to the specified proportions each month. Most link canals are set to operate this way. The other option for the parameter, “D,” indicates a “dam” scenario, in which water is stored during the monsoon season and released during the dry season. In that scenario, the model handles the transfer as follows: the offtake (dammed) river sees a reduction of water according to the inverse of the specified proportions. In other words, water is reduced in the offtake river when the proportion is “0” for the month. This represents the water being stored in the dam, but not delivered to the outfall river. The outfall river sees the outfall as specified by the proportions.
+* T: “T” means that this canal operates as a "transfer" scenario – that is, water is simply transferred according to the specified proportions each month. Most link canals are set to operate this way. The other option for the parameter, “D,” indicates a “dam” scenario, in which water is stored during the monsoon season and released during the dry season. In that scenario, the model handles the transfer as follows: the offtake (dammed) river sees a reduction of water according to the inverse of the specified proportions. In other words, water is reduced in the offtake river when the proportion is “0” for the month. This represents the water being stored in the dam, but not delivered to the outfall river. The outfall river sees the outfall as specified by the proportions.
 
 To change the operating specifications for link canal #10, simply change any of its parameters or values. For example, to connect the link canal to Farakka Barrage instead of Barwa Sagar Reservoir, change “Barwa Sagar Reservoir” to “Farakka Barrage.” To double the annual offtake of water, change “1074” to “2148.” To simulate a hotter climate by increasing evaporation loss, change “366” to a higher number. Change the 12 proportion values to change how the water is moved throughout the year. 
 
-Note that you can also build a new link canal simply by adding another line to the links file. Fill in the parameters and values as above. If the new link canal does not utilize structures (dams, barrages, or  offtake and outfall points) that already exist in the database, and/or if the new link canal connects rivers that do not already exists in the database, these will have to be added to the structures.txt and/or rivers.txt file. Adding structures and rivers is very straightforward and is explained in the next section. 
+Note that you can also build a new link canal simply by adding another line to the links file. Fill in the parameters and values as above. If the new link canal utilizes structures or points that do not already exist in the database, and/or if the new link canal connects rivers that do not already exists in the database, these will have to be added to the structures.txt and/or rivers.txt file. Adding structures and rivers is straightforward and is explained in the next section. 
 
 ###Adding a new river
 
-In the rivers.txt file, each row has two values. The first value of each row is a river name. The second value is a list of all nodes through which the river passes. The first node typically the river headwaters, “Rivername headwaters.” Next are all confluences through which the river passes, named as “incoming-parent.” For example, the confluence where the Kosi enters the Ganga is named “Kosi-Ganga.” The last confluence is the river mouth, typically called “Rivername mouth.” If the river does not end at a mouth, it ends at its confluence with the parent river (e.g., the Kosi ends at “Kosi-Ganga.”)
+In the rivers.txt file, each row has two values. The first value of each row is a river name. The second value is a list of all nodes through which the river passes. The first node of the list is typically the river headwaters, “Rivername headwaters.” Next are all confluences through which the river passes, named as “tributary-mainstem.” For example, the confluence where the Kosi enters the Ganga is named “Kosi-Ganga.” The last confluence is the river mouth, typically called “Rivername mouth.” If the river does not end at a mouth, it ends at its confluence with the main stem (e.g., the Kosi ends at at the point “Kosi-Ganga.”)
 
 To add a new river to the file, simple add a new row to rivers.txt. Fill in the headwater node, confluences, and mouth node accordingly. For example, to add the Netravati to the model, a line would be added to rivers.txt:
 
 #####Netravati;Netravati headwaters,Netravati mouth
 
-To add the Gomti River, a tributary of the Ganga that was not included in the model, a line would be added to rivers.txt:
+To add the Gomti River, a tributary of the Ganga that was not included in the original model, a line would be added to rivers.txt:
 
 #####Gomti;Gomti headwaters,Gomti-Ganga
 
 In this case, the Ganga line would also have to be modified to include its new confluence with the Gomti:
 
-#####Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
+#####Ganga;Ganga headwaters,Yamuna-Ganga,*_Gomti-Ganga,_*Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
 
 The confluence must be added in the correct location relative to the existing confluences in the database (confluences are listed for each river from upstream to downstream). 
 
@@ -190,9 +192,9 @@ Explanation of parameters:
 * Ghaghara: The river on which the structure will be built
 * Ghaghara headwaters: The node upstream of the structure
 * Sarda-Ghaghara: The node downstream of the structure
-* 12000: The dead storage of the structure, if it is a dam (this water will be permanently removed from the river in the simulation)
-* Proposed: The structure is proposed as part of the NRLP. The other option, “exists,” is for existing structures that are proposed to be utilized as part of the NRLP (for example, Farakka Barrage).
-* Dam: The structure type. Options are Dam, Barrage, Offtake, or Outfall. Offtake is for an offtake location without a specified new dam or barrage, and Outfall is for an outfall location directly into a river. 
+* 12000: The dead storage of the structure in MCM, if it is a dam (this water will be permanently removed from the river in the simulation)
+* Proposed: The structure is proposed as part of the NRLP. The other option, “Exists,” is for existing structures that are proposed to be utilized as part of the NRLP (for example, Farakka Barrage).
+* Dam: The structure type. Options are Dam, Barrage, Offtake, or Outfall. Offtake is for an offtake location without a new dam or barrage, and Outfall is for an outfall location directly into a river. 
 
 To modify a dam’s dead storage, for example, simply change that value in structures.txt. To build a new structure, add a row to the structures.txt file. To find the closest upstream node, build the model with all canals on:
 ```
@@ -210,7 +212,7 @@ To put all of these examples together, we will build a new (fake) link canal int
 
 to the bottom of rivers.txt. Next, modify the Ganga line to add the Gomti-Ganga confluence:
 
-#####Ganga;Ganga headwaters,Yamuna-Ganga,Gomti-Ganga,Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
+#####Ganga;Ganga headwaters,Yamuna-Ganga,*_Gomti-Ganga,_*Ghaghara-Ganga,Son-Ganga,Gandak-Ganga,STG-Ganga,Kosi-Ganga,Mahananda-Ganga,Farakka Barrage,Hardinge Bridge,Brahmaputra-Ganga,Meghna-Ganga,Ganga mouth
 Save rivers.txt and close.
 
 - Open structures.txt. We will add a new dam on the Gomti river, with a dead storage of 3000 MCM. Because this is the only structure on the Gomti river, we know it will fall between the nodes Gomti headwaters and Gomti-Ganga. Add the dam by adding the line to the end of structures.txt:
@@ -223,7 +225,7 @@ We also need to add an outfall location on the Son river for our new link canal.
 
 Save structures.txt and close.
 
-- Open links.txt. We will add our link canal and specify that it operates as a “Dam,” so that water is stored from July-October and delivered to the Son evenly during the rest of the months. 2000 MCM will be transferred per year, with 100 transmission (evaporation) loss, 500 enroute irrigation use, and 30 enroute domestic and industrial use. 13700 will therefore be delivered to the Son per year. 
+- Open links.txt. We will add our link canal and specify that it operates as a “Dam,” so that water is stored from July-October and delivered to the Son evenly during the rest of the months. 2000 MCM will be transferred per year, with 100 transmission (evaporation) loss, 500 enroute irrigation use, and 30 enroute domestic and industrial use. 1370 will therefore be delivered to the Son per year. 
 
 To represent this link, add a line to links.txt:
 
