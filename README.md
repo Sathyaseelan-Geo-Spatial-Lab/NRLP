@@ -8,18 +8,20 @@
 
 If you already have a basic Python installation, install numpy with pip from the command line:
 
+```
 > pip install numpy
+```
 
 ##Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
 
 With Anaconda: 
-
+```
 > conda install –c mutirri py2neo=2.0.8
-
+```
 With pip:
-
+```
 > pip install py2neo==2.0.8
-
+```
 #2. Download files 
 Download or clone all of the files in this repository and save them to a folder of your choice. 
 
@@ -42,19 +44,19 @@ A Graph Style Sheet should pop up. Drag the file “belmontstyle.grass” from y
 ##If Neo4J is not already running, start Neo4J (in Windows, from the start menu) and click “start”:
 
 ##Open a command line (cmd in Windows, or a terminal in Mac/Unix), and navigate to the input files folder:
-
+```
 > chdir Desktop\Neo4JInputs
-
+```
 (on Windows), or 
-
+```
 > cd Desktop/Neo4JInputs 
-
+```
 (on Mac/UNIX).
 
 ##Run the script. We are going to run it with an optional argument that sets all link canals to “off” for this initial test. 
-
+```
 > python NRLP.py --canals OFF
-
+```
 This runs the simulation with all link canals set to “off,” and the software will calculate water discharge changes for 10 points (Hooghly mouth, Farakka Barrage on the Ganga, Hardinge Bridge on the Ganga, Bahadurabad gauging station on the Brahmaputra, the Ganga/Brahmaputra/Meghna mouth at the Bay of Bengal, the Mahanadi mouth, the Godavari mouth, the Krishna mouth, the Penna mouth, and the Kaveri mouth). If everything is set up correctly, you should see a list of rivers printing to the console. When the simulation is done, a new file should appear in the folder: “results.txt.” This file should give expected annual and monthly changes in water discharge for the points specified. All of these values should be “0” on your initial run, because all link canals are set to “off.” 
  
 #5. Explore the results in the database
@@ -78,9 +80,9 @@ $ MATCH ()-[r*]->(n {name:'Godavari mouth'}) RETURN *
 This is equivalent to asking the database “which nodes are connected to the node called Godavari mouth?” The answer will display on the screen – in this simulation, only the Godavari headwaters node is connected to the river mouth. 
  
 ##Turn the link canals on and re-build the database. Go back to the command line (cmd in Windows, or terminal in Mac/Unix) and type:
-
+```
 > python NRLP.py --canals ON
-
+```
 This will build every link canal in the NRLP plan. It may take up to a minute to run the simulation. Changes in water discharge for the ten points of interest will print to the console and to the results.txt file again, but this time there should be values representing the monthly and annual water discharge changes given full implementation of the NRLP. We can query the database now to see what the river system of India looks like with the NRLP in place:
 
 $ MATCH (n) RETURN (n) 
@@ -107,9 +109,9 @@ To build a user-defined subset of link canals, open the “links.txt” input fi
 To turn a subset of link canals on, simply set the keywords “ON” and “OFF” in front of each link accordingly. It is not recommended to use find-and-replace to globally change these keywords, as this can change the names of structures (e.g., “Sone Barrage” changes to “SOFFe Barrage” and breaks the link canal in the simulation.  
 
 Then, rebuild the database from the command line, with no canals argument this time:
-
+```
 > python NRLP.py
-
+```
 New results will print to the file, and the Neo4J database at http://localhost:7474/browser/ can be inspected and queried as before. 
 Caution: while changing the model keywords is simple in practice, it is listed under “advanced usage” because there are currently no fail-safes built in to prevent unrealistic link canal subsets from being built. For example, it is possible to build link canal 1.3 in the model without building sections 1.1, 1.2, 1.4 or 1.5. In reality, this would never occur. Similarly, it is possible to build the Subarnarekha-Mahanadi link canal (#15) without building the compensating link canal from Farakka Barrage to the Subarnarekha (#14). This scenario would result in more water being pulled from the Subarnarekha than exists in the river. Users should therefore take care to build only realistic groups of link canals if the data are to be used for scientific purposes. 
 
@@ -179,9 +181,9 @@ Proposed: The structure is proposed as part of the NRLP. The other option, “ex
 Dam: The structure type. Options are Dam, Barrage, Offtake, or Outfall. Offtake is for an offtake location without a specified new dam or barrage, and Outfall is for an outfall location directly into a river. 
 
 To modify a dam’s dead storage, for example, simply change that value in structures.txt. To build a new structure, add a row to the structures.txt file. To find the closest upstream node, build the model with all canals on:
-
+```
 > python NRLP.py --canals ON
-
+```
 Examine the database in Neo4J to find the two nodes between which you wish to put your new structure. 
 
 #7. Advanced usage (b): Putting it all together to add a new (fake) link canal
@@ -216,9 +218,9 @@ ON;30;Gomti High Dam;Gomti-Son Outfall;2000;100;500;30;1370;.125,.125,.125,.125,
 Save links.txt and close
 
 ##Run the model to rebuild the database
-
+```
 > python NRLP.py 
-
+```
 ##Navigate to http://localhost:7474 in your browser to view the Neo4J database. 
 
 ##Enter the following command to view the Ganga basin with the new canal:
