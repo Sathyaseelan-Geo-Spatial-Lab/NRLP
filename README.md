@@ -150,7 +150,7 @@ Explanation of parameters:
 * 10: The link canal’s ID number from Higgins et al. (2017)
 * Daudhan Dam: The link canal will offtake water from the Daudhan Dam on the Ken River. Operating specifications for the Daudhan Dam structure can be found in “structures.txt"
 * Barwa Sagar Reservoir: the link canal will outfall into Barwa Sagar Reservoir on the Betwa River.
-* 1074: The canal is set to remove 1074 MCM (1 MCM is 10<sup>6<\sup> cubic meters of water) from the Ken River per year
+* 1074: The canal is set to remove 1074 MCM (1 MCM is 10<sup>6</sup> cubic meters of water) from the Ken River per year
 * 68: 68 MCM per year will be lost to evaporation
 * 366: 366 MCM per year will be lost to enroute irrigation
 * 49: 49 MCM per year will be lost to enroute domestic and industrial usage
