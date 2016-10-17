@@ -14,7 +14,6 @@ import argparse
 parser=argparse.ArgumentParser()
 parser.add_argument("--canals", help="canals can be ON or OFF, optional argument to overwrite input file and turn all canals on or off. Without setting this option, the program uses what is in the input file.")
 args = parser.parse_args()
-args.canals='ON'
 
 ##########################################
 ############## USER SET-UP ###############
@@ -293,24 +292,33 @@ with open(linksFile, 'rU') as csvfile:
                 starts_at=row[2]
                 ends_at=row[3]
                 cypher.execute('MATCH (n {name:\''+starts_at+'\'})-[rel]->(a {name:\''+ends_at+'\'}) DELETE rel')
-                
+     
+#2b. As a special case, also turn the Hooghly River off temporarily - it acts as a distributary channel and so shouldn't
+  #   receive summed values from the Ganga basin
+     
+cypher.execute('MATCH (n {name:\''+'Farakka Barrage'+'\'})-[rel]->(a {name:\''+'Hooghly mouth'+'\'}) DELETE rel')  
+        
 #3. Sum over all the paths to the mouth of interest. Include the dams here. Print the results to console and results file.            
 f = open(resultsFile, 'w+')
 f.write('River mouth or POI, total annual change in 10^6 m^3, monthly changes in m^3/s\n')
 for mouth in mouths:
     nodes=cypher.execute('MATCH p=()-[r*]->(n {name:\''+mouth+'\'}) RETURN nodes(p)')
-    
-    total_water_change=0
-    monthlies=np.array([0.,0,0,0,0,0,0,0,0,0,0,0])
-    nodeslist=[]
-    #create list of unique nodes in the path
-    for node in nodes:
-        nodename=pointname2varname(node[0][0].properties['name'])
-        if nodename not in nodeslist:
-            nodeslist.append(nodename)
-            total_water_change+=(node[0][0].properties['water_shift'])
-            pull_monthlies=np.array([node[0][0].properties['Jan'],node[0][0].properties['Feb'],node[0][0].properties['Mar'],node[0][0].properties['Apr'],node[0][0].properties['May'],node[0][0].properties['Jun'],node[0][0].properties['Jul'],node[0][0].properties['Aug'],node[0][0].properties['Sep'],node[0][0].properties['Oct'],node[0][0].properties['Nov'],node[0][0].properties['Dec']])                
-            monthlies+=pull_monthlies
+    if mouth=='Hooghly mouth' and len(nodes)==0:
+        node=cypher.execute('MATCH (n {name:\''+mouth+'\'}) RETURN n')
+        total_water_change=(node[0][0].properties['water_shift'])
+        monthlies=np.array([node[0][0].properties['Jan'],node[0][0].properties['Feb'],node[0][0].properties['Mar'],node[0][0].properties['Apr'],node[0][0].properties['May'],node[0][0].properties['Jun'],node[0][0].properties['Jul'],node[0][0].properties['Aug'],node[0][0].properties['Sep'],node[0][0].properties['Oct'],node[0][0].properties['Nov'],node[0][0].properties['Dec']])                
+    else:
+        total_water_change=0
+        monthlies=np.array([0.,0,0,0,0,0,0,0,0,0,0,0])
+        nodeslist=[]
+        #create list of unique nodes in the path
+        for node in nodes:
+            nodename=pointname2varname(node[0][0].properties['name'])
+            if nodename not in nodeslist:
+                nodeslist.append(nodename)
+                total_water_change+=(node[0][0].properties['water_shift'])
+                pull_monthlies=np.array([node[0][0].properties['Jan'],node[0][0].properties['Feb'],node[0][0].properties['Mar'],node[0][0].properties['Apr'],node[0][0].properties['May'],node[0][0].properties['Jun'],node[0][0].properties['Jul'],node[0][0].properties['Aug'],node[0][0].properties['Sep'],node[0][0].properties['Oct'],node[0][0].properties['Nov'],node[0][0].properties['Dec']])                
+                monthlies+=pull_monthlies
     
     DPM=30.4166666; #Days per month. Assume that all the months are the same length.               
     print mouth+': '+str(np.int(np.round(total_water_change)))+'*10^6 m^3/y, Monthly values:'+(",".join([str(np.int(np.round(x*10**6/(60*60*24*DPM)))) for x in monthlies]))    
@@ -341,6 +349,8 @@ with open(linksFile, 'rU') as csvfile:
                 monthlies=monthly.split(',')
                 exec('graph.create(py2neo.rel('+starts_at_v+',\"'+linkname+'\",'+ends_at_v+',type=\"canal\",transfer='+row[4]+',TL='+row[5]+',IRR='+row[6]+',DI='+row[7]+',outfall='+row[8]+',Jan='+monthlies[0]+',Feb='+monthlies[1]+',Mar='+monthlies[2]+',Apr='+monthlies[3]+',May='+monthlies[4]+',Jun='+monthlies[5]+',Jul='+monthlies[6]+',Aug='+monthlies[7]+',Sep='+monthlies[8]+',Oct='+monthlies[9]+',Nov='+monthlies[10]+',Dec='+monthlies[10]+',DamTransfer=\''+row[11]+'\'))')
 
-
-
+#4b. Rebuild the Hooghly River also
+starts_at_v=pointname2varname('Farakka Barrage')
+ends_at_v=pointname2varname('Hooghly mouth')
+exec('graph.create(py2neo.rel('+starts_at_v+',\"'+'Hooghly'+'\",'+ends_at_v+',type=\"river\"))')
 
