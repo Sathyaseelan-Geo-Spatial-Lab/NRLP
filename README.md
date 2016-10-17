@@ -1,8 +1,4 @@
-# For best results, open "Getting started.pdf" and follow the directions to run a simulation of India's National River Linking Project (NRLP). The same text is copied here, with preliminary formatting and without graphics...
-
-Getting started with the NRLP tool
-
-Instructions for installing software, setting up Neo4J, running a basic simulation, exploring the database, and making advanced changes to the parameters
+Getting started with the NRLP tool: instructions for installing software, setting up Neo4J, running a basic simulation, exploring the database, and making advanced changes to the parameters
 
 #Install required software
 
