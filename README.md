@@ -14,10 +14,6 @@ If you already have a basic Python installation, install numpy with pip from the
 
 - Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
 
-With Anaconda: 
-```
-> conda install –c mutirri py2neo=2.0.8
-```
 With pip:
 ```
 > pip install py2neo==2.0.8
@@ -75,7 +71,7 @@ This runs the simulation with all link canals set to “off,” and the software
 
 Neo4J is a graph database program with its own query language, Cypher. The Cypher commands in this document are only meant get you started exploring the connected graph database of India’s rivers and the NRLP link canals. For a complete tutorial of Cypher, see Neo4J’s materials on their website.
 
-- If you haven’t already, open your browser and navigate to http://localhost:7474/browser/ . Note that if Neo4J is running, this tab should have opened when you clicked “start.”
+- If you haven’t already, open your browser and navigate to http://localhost:7474/browser/ . If Neo4J is running, this tab should have opened when you clicked “start,” but you will likely have to refresh the page to view the simulation results. 
 
 - In the command window, type the following:
 
