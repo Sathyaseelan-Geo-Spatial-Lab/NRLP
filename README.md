@@ -78,7 +78,7 @@ Neo4J is a graph database program with its own query language, Cypher. The Cyphe
 
 and hit enter. This will display everything in the database - the full river and link canal system built by the last simulation. 
 Because the simulation had all link canals set to “off,” you should only see rivers. The rivers flow to their mouths; arrows indicate direction of flow. There is no spatial information in this database, so the locations of the rivers on the screen does not correspond to their locations in real life. This is just a backend representing connectivity and flow. Flow directions have been hard-coded into the database. If you’d like, you can click on nodes and drag them around to reposition them on the screen. Note that you can blow up the database window by clicking the small arrow in the top right corner. You will need to shrink it again before entering any new commands. 
-Click on any of the nodes (light or dark blue circles) to see its monthly change in water discharge. All values should be zero, since all link canals were set to “OFF.” Many rivers consist of just two nodes – a headwaters and a mouth – and the rivers are not connected together because there are no link canals in the simulation. 
+Many rivers consist of just two nodes – a headwaters and a mouth – and the rivers are not connected together because there are no link canals in the simulation. 
 
 - Let’s explore connectivity by querying the database. We are going to ask which nodes contribute to a certain node of interest – in this case, the Godavari mouth. Do this by typing:
 
