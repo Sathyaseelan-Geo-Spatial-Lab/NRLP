@@ -14,7 +14,6 @@
 
 - Install py2neo, version 2.0.8. Note that the software currently will not run with later versions of py2neo, so be sure to specify the version in installation.
 
-With pip:
 ```
 > pip install py2neo==2.0.8
 ```
