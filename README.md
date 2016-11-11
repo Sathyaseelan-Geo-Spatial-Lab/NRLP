@@ -6,7 +6,7 @@
 
 - Install Python 2.7, including numpy. Anaconda is a good Python platform that comes with numpy: https://www.continuum.io/downloads
 
-Anaconda and many other platforms should come with numpy, but if you use a different Python platform and don't have it, install numpy with pip from the command line:
+- Anaconda and many other platforms should come with numpy, but if you use a different Python platform and don't have it, install numpy with pip from the command line:
 
 ```
 > pip install numpy
