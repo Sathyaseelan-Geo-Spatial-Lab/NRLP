@@ -70,7 +70,7 @@ This runs the simulation with all link canals set to “off,” and the software
 
 Neo4J is a graph database program with its own query language, Cypher. The Cypher commands in this document are only meant get you started exploring the connected graph database of India’s rivers and the NRLP link canals. For a complete tutorial of Cypher, see Neo4J’s materials on their website.
 
-- If you haven’t already, open your browser and navigate to http://localhost:7474/browser/ . If Neo4J is running, this tab should have opened when you clicked “start,” but you will likely have to refresh the page to view the simulation results. 
+- Open your browser and navigate to http://localhost:7474/browser/ . If Neo4J is running, this tab should have opened when you clicked “start,” but you will likely have to refresh the page to view the simulation results. 
 
 - In the command window, type the following:
 
