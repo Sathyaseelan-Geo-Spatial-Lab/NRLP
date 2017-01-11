@@ -264,13 +264,12 @@ for node in p:
     for canal in outcanals:
         if canal[0].properties['DamTransfer']=='T':
             water_monthly-=canal[0].properties['transfer']*np.array([canal[0].properties['Jan'],canal[0].properties['Feb'],canal[0].properties['Mar'],canal[0].properties['Apr'],canal[0].properties['May'],canal[0].properties['Jun'],canal[0].properties['Jul'],canal[0].properties['Aug'],canal[0].properties['Sep'],canal[0].properties['Oct'],canal[0].properties['Nov'],canal[0].properties['Dec']])         
-        else:
-            a=np.array([canal[0].properties['Jan'],canal[0].properties['Feb'],canal[0].properties['Mar'],canal[0].properties['Apr'],canal[0].properties['May'],canal[0].properties['Jun'],canal[0].properties['Jul'],canal[0].properties['Aug'],canal[0].properties['Sep'],canal[0].properties['Oct'],canal[0].properties['Nov'],canal[0].properties['Dec']])         
-            a_prime=np.where(a==0)
-            a_inverse=np.copy(a)
-            a_inverse[a_prime]=1/len(a_prime[0])
-            a_inverse[np.where(a!=0.)]=0
-            water_monthly-=a_inverse*canal[0].properties['transfer'] 
+        if canal[0].properties['DamTransfer']=='K': #special case for Krishna impoundments
+            a=np.array([.05,.05,.05,.05,.05,.05,.05,.21,.19,.15,.05,.05]) #If it's a dam, impound annual total during the four monsoon months.
+            water_monthly-=a*canal[0].properties['transfer'] 
+        if canal[0].properties['DamTransfer']=='D': #all other dams impound during the monsoon
+            a=np.array([0,0,0,0,0,0,.27,.313333,.313333,.08333333,.02,0])
+            water_monthly-=a*canal[0].properties['transfer'] 
                          
         starting_water-=canal[0].properties['transfer']     
     cypher.execute('MATCH (n {name:\''+nodename+'\'}) SET n.water_shift = '+str(starting_water)+' RETURN n')
