@@ -138,7 +138,7 @@ To change the operating specifications of the link canals, modify the numbers in
 
 As an example, we will modify link canal #10. In the default files downloaded from the website, link canal #10 is:
 
-#####ON;10;Daudhan Dam;Barwa Sagar Reservoir;1074;68;366;49;591;.181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191;;T
+#####ON;10;Daudhan Dam;Barwa Sagar Reservoir;1074;68;366;49;591;.181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191;;D
 
 Explanation of parameters: 
 * ON: The link canal is turned on in the simulation
@@ -152,7 +152,7 @@ Explanation of parameters:
 * 591: 591 MCM per year will outfall into the Barwa Sagar Reservoir. Outfall should equal offtake minus losses, however, note that there is currently no fail-safe to ensure that the user has set the parameters this way. Therefore, it is theoretically possible to direct the model to outfall more water than is taken from the offtake river.
 * .181,.107,.004,.004,.004,.006,.076,.038,.067,.108,.214,.191: These 12 numbers denote assumed monthly operating specifications. For example, in this scenario, 18.1 % of 1074 MCM will be removed in January, 10.7% in February, etc. All losses and outfalls will also scale according to these proportions. The values must total to 1, however, note that there is currently no fail-safe to check and make sure that values equal to 1. Care should be taken to double-check that proportions total to 1. 
 * None: The second to last value, “additional required structures,” is empty in this scenario. In other link canals, it lists additional structures such as re-regulating dams that the database should build in conjunction with the main offtake and outfall structures or points. 
-* T: “T” means that this canal operates as a "transfer" scenario – that is, water is simply transferred according to the specified proportions each month. Most link canals are set to operate this way. The other option for the parameter, “D,” indicates a “dam” scenario, in which water is stored during the monsoon season and released during the dry season. In that scenario, the model handles the transfer as follows: the offtake (dammed) river sees a reduction of water according to the inverse of the specified proportions. In other words, water is reduced in the offtake river when the proportion is “0” for the month. This represents the water being stored in the dam, but not delivered to the outfall river. The outfall river sees the outfall as specified by the proportions.
+* D: "D" means that this canal operates as a dam. Transfers follow the specified proportions, and the full annual transfer volume will be impounded during the monsoon months. Other options are "T" for (direct) Transfer, in which transfers follow the specified proportions, but water is not impounded (it is withdrawn directly each month). "K" is a special option for the Krishna basin, which allows year-round impoundments to reach the required transfer volumes. Year-round impoundments in the Krishna basin are drawn primarily from Godavari deliveries. 
 
 To change the operating specifications for link canal #10, simply change any of its parameters or values. For example, to connect the link canal to Farakka Barrage instead of Barwa Sagar Reservoir, change “Barwa Sagar Reservoir” to “Farakka Barrage.” To double the annual offtake of water, change “1074” to “2148.” To simulate a hotter climate by increasing evaporation loss, change “366” to a higher number. Change the 12 proportion values to change how the water is moved throughout the year. 
 
